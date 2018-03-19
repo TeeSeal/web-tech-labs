@@ -18,6 +18,7 @@ defmodule LabWeb.Router do
 
     get "/", PageController, :index
     get "/tabs/list/:type", TabController, :index
+    get "/tabs/new/:type", TabController, :new
     resources "/tabs", TabController
     resources "/users", UserController
   end

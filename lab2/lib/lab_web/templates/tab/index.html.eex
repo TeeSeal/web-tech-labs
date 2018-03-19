@@ -30,12 +30,20 @@
         <td><%= tab.tab %></td>
 
         <td class="text-right">
-          <span><%= link "Delete", to: tab_path(@conn, :delete, tab), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+          <span>
+            <%=
+              link "Delete",
+              to: tab_path(@conn, :delete, tab),
+              method: :delete,
+              data: [confirm: "Are you sure?"],
+              class: "btn btn-danger btn-xs"
+            %>
+          </span>
         </td>
       </tr>
   <% end %>
     </tbody>
   </table>
 
-  <span><%= link "New Tab", to: tab_path(@conn, :new) %></span>
+  <span><%= link "New Tab", to: tab_path(@conn, :new, @type) %></span>
 </div>

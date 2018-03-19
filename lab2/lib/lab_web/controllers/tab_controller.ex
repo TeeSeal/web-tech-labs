@@ -14,14 +14,14 @@ defmodule LabWeb.TabController do
     render(conn, "index.html", tabs: tabs)
   end
 
-  def new(conn, _params) do
+  def new(conn, %{"type" => type}) do
     changeset = Library.change_tab(%Tab{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, type: type)
   end
 
   def create(conn, %{"tab" => tab_params}) do
     case Library.create_tab(tab_params) do
-      {:ok, tab} ->
+      {:ok, _tab} ->
         conn
         |> put_flash(:info, "Tab created successfully.")
         |> redirect(to: tab_path(conn, :index, tab_params["type"]))
