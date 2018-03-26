@@ -1,0 +1,32 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background-color: #343a40;
+  color: white;
+}
+
+main {
+  padding-top: 55px;
+  padding-bottom: 55px;
+}
+
+.jumbotron-instrument {
+  background-size: cover;
+  color: white;
+  height: 500px;
+}
+
+.jumbotron-guitar {
+  background-image: url("/images/guitar.jpg");
+}
+
+.jumbotron-piano {
+  background-image: url("/images/piano.jpg");
+}
+
+.jumbotron-violin {
+  background-image: url("/images/violin.jpg");
+}

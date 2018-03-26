@@ -1,0 +1,7 @@
+<div class="container">
+  <h2>New <%= LabWeb.StringHelpers.capitalize(@type) %> Tab</h2>
+  <%=
+    render "form.html",
+    Map.merge(assigns, %{action: tab_path(@conn, :create)})
+  %>
+</div>

@@ -1,0 +1,49 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :title, class: "control-label" %>
+    <%= text_input f, :title, class: "form-control" %>
+    <%= error_tag f, :title %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :artist, class: "control-label" %>
+    <%= text_input f, :artist, class: "form-control" %>
+    <%= error_tag f, :artist %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :album, class: "control-label" %>
+    <%= text_input f, :album, class: "form-control" %>
+    <%= error_tag f, :album %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :album_image_url, class: "control-label" %>
+    <%= text_input f, :album_image_url, class: "form-control" %>
+    <%= error_tag f, :album_image_url %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :genre, class: "control-label" %>
+    <%= text_input f, :genre, class: "form-control" %>
+    <%= error_tag f, :genre %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :tab, class: "control-label" %>
+    <%= textarea f, :tab, class: "form-control" %>
+    <%= error_tag f, :tab %>
+  </div>
+
+  <%= hidden_input f, :type, value: @type %>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

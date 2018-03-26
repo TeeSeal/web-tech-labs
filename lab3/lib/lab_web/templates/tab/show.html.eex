@@ -1,0 +1,38 @@
+<h2>Show Tab</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @tab.title %>
+  </li>
+
+  <li>
+    <strong>Artist:</strong>
+    <%= @tab.artist %>
+  </li>
+
+  <li>
+    <strong>Album:</strong>
+    <%= @tab.album %>
+  </li>
+
+  <li>
+    <strong>Album image url:</strong>
+    <%= @tab.album_image_url %>
+  </li>
+
+  <li>
+    <strong>Genre:</strong>
+    <%= @tab.genre %>
+  </li>
+
+  <li>
+    <strong>Tab:</strong>
+    <%= @tab.tab %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: tab_path(@conn, :edit, @tab) %></span>
+<span><%= link "Back", to: tab_path(@conn, :index) %></span>
