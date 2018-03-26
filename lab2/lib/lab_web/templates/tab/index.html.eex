@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid jumbotron-instrument jumbotron-<%= @type %>">
   <div class="container align-middle">
-    <h1 class="display-4"><%= capitalize(@type) %> Tabs</h1>
+    <h1 class="display-4"><%= LabWeb.StringHelpers.capitalize(@type) %> Tabs</h1>
     <p class="lead">You can find and create <%= @type %> tabs here.</p>
   </div>
 </div>
