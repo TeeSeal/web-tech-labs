@@ -38,9 +38,10 @@ defmodule LabWeb.Router do
     get "/tabs/list/:type", TabController, :index
     get "/tabs/new/:type", TabController, :new
     post "/tabs", TabController, :create
+    get "/tabs/:id", TabController, :show
     delete "/tabs/:id", TabController, :delete
-    get "tabs/:id/edit", TabController, :edit
-    put "tabs/:id", TabController, :update
+    get "/tabs/:id/edit", TabController, :edit
+    put "/tabs/:id", TabController, :update
 
     delete "/login", SessionController, :delete
   end

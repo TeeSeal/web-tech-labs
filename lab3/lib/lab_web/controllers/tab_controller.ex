@@ -30,10 +30,10 @@ defmodule LabWeb.TabController do
     end
   end
 
-  # def show(conn, %{"id" => id}) do
-  #   tab = Library.get_tab!(id)
-  #   render(conn, "show.html", tab: tab)
-  # end
+  def show(conn, %{"id" => id}) do
+    tab = Library.get_tab!(id)
+    render(conn, "show.html", tab: tab)
+  end
 
   def edit(conn, %{"id" => id}) do
     tab = Library.get_tab!(id)

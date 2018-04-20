@@ -12,9 +12,6 @@
         <th>Title</th>
         <th>Artist</th>
         <th>Album</th>
-        <th>Album image url</th>
-        <th>Genre</th>
-        <th>Tab</th>
 
         <th></th>
       </tr>
@@ -25,11 +22,15 @@
         <td><%= tab.title %></td>
         <td><%= tab.artist %></td>
         <td><%= tab.album %></td>
-        <td><%= tab.album_image_url %></td>
-        <td><%= tab.genre %></td>
-        <td><%= tab.tab %></td>
 
         <td class="text-right">
+          <span>
+            <%=
+              link "View",
+              to: tab_path(@conn, :show, tab),
+              class: "btn btn-xs"
+            %>
+          </span>
           <span>
             <%=
               link "Edit",
