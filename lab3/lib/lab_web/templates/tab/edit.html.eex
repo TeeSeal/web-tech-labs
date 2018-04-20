@@ -1,5 +1,7 @@
-<h2>Edit Tab</h2>
-
-<%= render "form.html", Map.put(assigns, :action, tab_path(@conn, :update, @tab)) %>
-
-<span><%= link "Back", to: tab_path(@conn, :index) %></span>
+<div class="container">
+  <h2>Edit Tab</h2>
+  <%=
+    render "form.html",
+    Map.merge(assigns, %{action: tab_path(@conn, :update, @tab.id), type: @tab.type})
+  %>
+</div>

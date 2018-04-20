@@ -22,7 +22,7 @@
       <%= render @view_module, @view_template, assigns %>
     </main>
 
-    <footer class="dark">
+    <footer class="dark fixed-bottom">
       <div class="container">
         © 2018 Copyright: Me
       </div>

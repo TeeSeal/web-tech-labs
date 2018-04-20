@@ -32,6 +32,13 @@
         <td class="text-right">
           <span>
             <%=
+              link "Edit",
+              to: tab_path(@conn, :edit, tab),
+              class: "btn btn-xs"
+            %>
+          </span>
+          <span>
+            <%=
               link "Delete",
               to: tab_path(@conn, :delete, tab),
               method: :delete,

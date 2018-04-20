@@ -101,4 +101,19 @@ defmodule Lab.Auth do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  def authenticate_user(username, password) do
+    Repo.get_by(User, username: username) |> check_password(password)
+  end
+
+  defp check_password(nil, _) do
+    {:error, "Invalid credentials"}
+  end
+
+  defp check_password(user, password) do
+    case Comeonin.Bcrypt.checkpw(password, user.password) do
+      true -> {:ok, user}
+      false -> {:error, "Invalid credentials"}
+    end
+  end
 end

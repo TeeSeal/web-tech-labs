@@ -9,22 +9,39 @@ defmodule LabWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :auth do
+    plug :browser
+    plug Lab.Auth.Pipeline
+    plug Lab.CurrentUser
+  end
+
+  pipeline :ensure_auth do
+    plug :auth
+    plug Guardian.Plug.EnsureAuthenticated
   end
 
   scope "/", LabWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :auth
 
     get "/", PageController, :index
-    get "/tabs/list/:type", TabController, :index
-    get "/tabs/new/:type", TabController, :new
-    resources "/tabs", TabController
-    resources "/users", UserController
+
+    get "/register", UserController, :new
+    post "/register", UserController, :create
+
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", LabWeb do
-  #   pipe_through :api
-  # end
+  scope "/", LabWeb do
+    pipe_through :ensure_auth
+
+    get "/tabs/list/:type", TabController, :index
+    get "/tabs/new/:type", TabController, :new
+    post "/tabs", TabController, :create
+    delete "/tabs/:id", TabController, :delete
+    get "tabs/:id/edit", TabController, :edit
+    put "tabs/:id", TabController, :update
+
+    delete "/login", SessionController, :delete
+  end
 end

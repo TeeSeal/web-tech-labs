@@ -20,7 +20,7 @@ defmodule Lab.Library.Tab do
   @doc false
   def changeset(%Tab{} = tab, attrs) do
     tab
-    |> cast(attrs, [:title, :artist, :album, :album_image_url, :genre, :tab, :type])
-    |> validate_required([:title, :artist, :album, :album_image_url, :genre, :tab, :type])
+    |> cast(attrs, [:title, :artist, :album, :album_image_url, :genre, :tab, :type, :user_id])
+    |> validate_required([:title, :artist, :album, :album_image_url, :genre, :tab, :type, :user_id])
   end
 end

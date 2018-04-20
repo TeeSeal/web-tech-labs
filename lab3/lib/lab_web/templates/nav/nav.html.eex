@@ -3,15 +3,32 @@
     <%= link "Tab Manager", to: page_path(@conn, :index), class: "navbar-brand" %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <%= if @current_user do %>
+          <li class="nav-item">
           <%= link "Guitar", to: tab_path(@conn, :index, "guitar"), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link "Piano", to: tab_path(@conn, :index, "piano"), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link "Violin", to: tab_path(@conn, :index, "violin"), class: "nav-link" %>
-        </li>
+          </li>
+          <li class="nav-item">
+            <%= link "Piano", to: tab_path(@conn, :index, "piano"), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link "Violin", to: tab_path(@conn, :index, "violin"), class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <%= if @current_user do %>
+          <li class="nav-item">
+            <%= link "Logout", to: session_path(@conn, :delete), method: "delete", class: "nav-link"  %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link "Register", to: user_path(@conn, :new), class: "nav-link"  %>
+          </li>
+          <li class="nav-item">
+            <%= link "Login", to: session_path(@conn, :new), class: "nav-link"  %>
+          </li>
+        <% end %>
       </ul>
     </div>
     <button

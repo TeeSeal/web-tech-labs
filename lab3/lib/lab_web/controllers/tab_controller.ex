@@ -2,10 +2,10 @@ defmodule LabWeb.TabController do
   use LabWeb, :controller
 
   alias Lab.Library
-  alias Lab.Library.Tab
 
   def index(conn, %{"type" => type}) do
     tabs = Library.list_tabs_of_type(type)
+    IO.inspect(tabs)
     render(conn, "index.html", tabs: tabs, type: type)
   end
 
@@ -15,7 +15,7 @@ defmodule LabWeb.TabController do
   end
 
   def new(conn, %{"type" => type}) do
-    changeset = Library.change_tab(%Tab{})
+    changeset = Library.change_tab()
     render(conn, "new.html", changeset: changeset, type: type)
   end
 
@@ -30,10 +30,10 @@ defmodule LabWeb.TabController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    tab = Library.get_tab!(id)
-    render(conn, "show.html", tab: tab)
-  end
+  # def show(conn, %{"id" => id}) do
+  #   tab = Library.get_tab!(id)
+  #   render(conn, "show.html", tab: tab)
+  # end
 
   def edit(conn, %{"id" => id}) do
     tab = Library.get_tab!(id)
@@ -45,10 +45,10 @@ defmodule LabWeb.TabController do
     tab = Library.get_tab!(id)
 
     case Library.update_tab(tab, tab_params) do
-      {:ok, tab} ->
+      {:ok, _tab} ->
         conn
         |> put_flash(:info, "Tab updated successfully.")
-        |> redirect(to: tab_path(conn, :show, tab))
+        |> redirect(to: tab_path(conn, :index, tab_params["type"]))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", tab: tab, changeset: changeset)
     end

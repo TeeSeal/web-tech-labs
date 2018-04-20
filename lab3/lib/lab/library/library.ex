@@ -25,6 +25,10 @@ defmodule Lab.Library do
     Repo.all(from tab in Tab, where: tab.type == ^type)
   end
 
+  def list_tabs_for_user(id) do
+    Repo.all(from tab in Tab, where: tab.user_id == ^id)
+  end
+
   @doc """
   Gets a single tab.
 
@@ -102,7 +106,7 @@ defmodule Lab.Library do
       %Ecto.Changeset{source: %Tab{}}
 
   """
-  def change_tab(%Tab{} = tab) do
+  def change_tab(%Tab{} = tab \\ %Tab{}) do
     Tab.changeset(tab, %{})
   end
 end
