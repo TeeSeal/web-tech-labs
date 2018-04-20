@@ -36,6 +36,9 @@ Also, we have 3 types of tabs but only 1 database table but the following pages 
 * `/tabs/list/piano`
 * `/tabs/list/violin`
 
+## Setup
+
+See in [lab2](https://github.com/TeeSeal/web-tech-labs/tree/master/lab2). You might also have to run `mix deps.get` again if you had already followed the steps in lab2 in order to fetch the new dependencies for the authentication.
 
 ## Conclusion
 
