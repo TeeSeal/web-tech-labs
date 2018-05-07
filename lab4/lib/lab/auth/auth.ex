@@ -116,4 +116,8 @@ defmodule Lab.Auth do
       false -> {:error, "Invalid credentials"}
     end
   end
+
+  def is_admin(%User{} = user) do
+    user.perm_level == 1
+  end
 end

@@ -7,6 +7,7 @@ defmodule Lab.Auth.User do
   schema "users" do
     field :password, :string
     field :username, :string
+    field :perm_level, :integer
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule Lab.Auth.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:username, :password])
+    |> cast(attrs, [:username, :password, :perm_level])
     |> validate_required([:username, :password])
     |> hash_password
   end
