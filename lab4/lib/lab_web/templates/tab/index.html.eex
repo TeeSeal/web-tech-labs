@@ -31,22 +31,24 @@
               class: "btn btn-xs"
             %>
           </span>
-          <span>
-            <%=
-              link "Edit",
-              to: tab_path(@conn, :edit, tab),
-              class: "btn btn-xs"
-            %>
-          </span>
-          <span>
-            <%=
-              link "Delete",
-              to: tab_path(@conn, :delete, tab),
-              method: :delete,
-              data: [confirm: "Are you sure?"],
-              class: "btn btn-danger btn-xs"
-            %>
-          </span>
+          <%= if @current_user.id == tab.user_id || @admin_session do %>
+            <span>
+              <%=
+                link "Edit",
+                to: tab_path(@conn, :edit, tab),
+                class: "btn btn-xs"
+              %>
+            </span>
+            <span>
+              <%=
+                link "Delete",
+                to: tab_path(@conn, :delete, tab),
+                method: :delete,
+                data: [confirm: "Are you sure?"],
+                class: "btn btn-danger btn-xs"
+              %>
+            </span>
+          <% end %>
         </td>
       </tr>
   <% end %>

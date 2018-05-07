@@ -3,9 +3,10 @@ defmodule LabWeb.TabController do
 
   alias Lab.Library
 
+  plug :check_access when action in [:edit, :update, :delete]
+
   def index(conn, %{"type" => type}) do
     tabs = Library.list_tabs_of_type(type)
-    IO.inspect(tabs)
     render(conn, "index.html", tabs: tabs, type: type)
   end
 
@@ -61,5 +62,20 @@ defmodule LabWeb.TabController do
     conn
     |> put_flash(:info, "Tab deleted successfully.")
     |> redirect(to: tab_path(conn, :index, tab.type))
+  end
+
+  defp check_access(conn, _params) do
+    tab = Library.get_tab!(conn.params["id"])
+    user = conn.assigns.current_user
+    case tab.user_id == user.id || user.perm_level == 1 do
+      true -> conn
+      false -> unauthorize(conn)
+    end
+  end
+
+  defp unauthorize(conn) do
+    conn
+    |> put_status(403)
+    |> render(LabWeb.ErrorView, "403.html", [])
   end
 end

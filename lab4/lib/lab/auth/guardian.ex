@@ -3,7 +3,6 @@ defmodule Lab.Auth.Guardian do
   alias Lab.Auth
 
   def subject_for_token(user, _claims) do
-    IO.inspect user
     {:ok, to_string(user.id)}
   end
 
