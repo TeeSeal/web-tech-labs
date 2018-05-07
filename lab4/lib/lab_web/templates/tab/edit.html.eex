@@ -1,0 +1,7 @@
+<div class="container">
+  <h2>Edit Tab</h2>
+  <%=
+    render "form.html",
+    Map.merge(assigns, %{action: tab_path(@conn, :update, @tab.id), type: @tab.type})
+  %>
+</div>

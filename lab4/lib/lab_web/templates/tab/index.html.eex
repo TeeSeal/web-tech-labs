@@ -1,0 +1,57 @@
+<div class="jumbotron jumbotron-fluid jumbotron-instrument jumbotron-<%= @type %>">
+  <div class="container align-middle">
+    <h1 class="display-4"><%= LabWeb.StringHelpers.capitalize(@type) %> Tabs</h1>
+    <p class="lead">You can find and create <%= @type %> tabs here.</p>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Album</th>
+
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+  <%= for tab <- @tabs do %>
+      <tr>
+        <td><%= tab.title %></td>
+        <td><%= tab.artist %></td>
+        <td><%= tab.album %></td>
+
+        <td class="text-right">
+          <span>
+            <%=
+              link "View",
+              to: tab_path(@conn, :show, tab),
+              class: "btn btn-xs"
+            %>
+          </span>
+          <span>
+            <%=
+              link "Edit",
+              to: tab_path(@conn, :edit, tab),
+              class: "btn btn-xs"
+            %>
+          </span>
+          <span>
+            <%=
+              link "Delete",
+              to: tab_path(@conn, :delete, tab),
+              method: :delete,
+              data: [confirm: "Are you sure?"],
+              class: "btn btn-danger btn-xs"
+            %>
+          </span>
+        </td>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+
+  <span><%= link "New Tab", to: tab_path(@conn, :new, @type) %></span>
+</div>

@@ -1,0 +1,41 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <%= link "Tab Manager", to: page_path(@conn, :index), class: "navbar-brand" %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <%= if @current_user do %>
+          <li class="nav-item">
+          <%= link "Guitar", to: tab_path(@conn, :index, "guitar"), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link "Piano", to: tab_path(@conn, :index, "piano"), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link "Violin", to: tab_path(@conn, :index, "violin"), class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <%= if @current_user do %>
+          <li class="nav-item">
+            <%= link "Logout", to: session_path(@conn, :delete), method: "delete", class: "nav-link"  %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link "Register", to: user_path(@conn, :new), class: "nav-link"  %>
+          </li>
+          <li class="nav-item">
+            <%= link "Login", to: session_path(@conn, :new), class: "nav-link"  %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <button
+      class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>

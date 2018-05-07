@@ -1,0 +1,23 @@
+<div class="container">
+  <h2 class="pt-4 pl-4"><%= @tab.title %></h2>
+
+  <div class="d-flex flex-column justify-content-center">
+    <div class="d-flex flex-row align-items-center">
+      <div class="card m-2" style="width: 18rem;">
+        <img class="card-img-top" src="<%= @tab.album_image_url %>">
+      </div>
+
+      <div class="flex-column">
+        <h3>Album: <%= @tab.album %></h3>
+        <h3>Artist: <%= @tab.artist %></h3>
+        <h3>Genre: <%= @tab.genre %></h3>
+        <span>Posted by: <%= @current_user.username %></span>
+      </div>
+    </div>
+
+    <h3>Tab:</h3>
+    <p class="text-left"><%= @tab.tab %></p>
+  <div>
+
+  <span><%= link "Back", to: tab_path(@conn, :index, @tab.type) %></span>
+</div>

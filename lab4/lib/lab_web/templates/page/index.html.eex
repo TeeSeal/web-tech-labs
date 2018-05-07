@@ -1,0 +1,46 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Tab Manager</h1>
+    <p class="lead">Create, manage and view music tabs.</p>
+    <hr class="my-4">
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Get Started</a>
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= static_path(@conn, "/images/guitar.jpg") %>" height="200">
+        <div class="card-body">
+          <h5 class="card-title">Guitar Tabs</h5>
+          <%= link "View", to: tab_path(@conn, :index, "guitar"), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= static_path(@conn, "/images/piano.jpg") %>" height="200">
+        <div class="card-body">
+          <h5 class="card-title">Piano Tabs</h5>
+          <%= link "View", to: tab_path(@conn, :index, "piano"), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= static_path(@conn, "/images/violin.jpg") %>" height="200">
+        <div class="card-body">
+          <h5 class="card-title">Violin Tabs</h5>
+          <%= link "View", to: tab_path(@conn, :index, "violin"), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
